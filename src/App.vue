@@ -29,10 +29,6 @@ const scrollToSection = (sectionId) => {
     <ServiceView id="Service"/>
     <PortfolioView id="Portfolio"/>
     <ContactView id="Contact"/>
-    <footer>
-      <p>Made with ❤️ by Benny Matuchewski</p>
-      <p :style="{display: 'flex', alignItems: 'center'}">Website made entirely with <img src="./assets/vue.svg"/></p>     
-    </footer>
   </div>
 </template>
 
