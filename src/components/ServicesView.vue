@@ -1,6 +1,6 @@
 <template>
-  <div id="section-service" class="service-container" :style="{ backgroundColor: colors.amarelo }">
-    <i class="fa-solid fa-chevron-left icon" @click="scrollBack"/>
+  <div id="section-service" class="section-service" :style="{ backgroundColor: colors.amarelo }">
+    
   </div>
 </template>
 
@@ -9,15 +9,24 @@ import colors from "../assets/colors/colors";
 </script>
 
 <style scoped lang="scss">
-.service-container {
-    min-height: 100vh;
-    position: relative;
+.section-service {
+  min-height: 100vh;
+  display: flex;
 
-    .icon {
-      position: absolute;
-      padding: 30px;
-      height: 20px;
-      cursor: pointer
-    }
+  .service-left-section {
+    width: 50%;
+    padding: 40px 0 30px 100px;
+    display: flex;
+    flex-direction: column;
+    
+  }
+  
+  .service-right-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+  }
 }
 </style>

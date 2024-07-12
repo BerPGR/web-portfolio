@@ -4,7 +4,7 @@
       <div class="home-left-section">
 
         <div>
-          <div :style="{paddingBottom: '30px', width: '100%'}" class="iam-title">
+          <div :style="{paddingBottom: '30px'}" class="iam-title">
             <p class="hello" :style="{ color: colors.roxo }">Hello!</p>
             <h1>I am</h1>
             <h1>Your</h1>
@@ -101,7 +101,7 @@ onUnmounted(() => {
 
           .hello {
             font-size: 16px;
-            transform: rotate(325deg);
+            transform: rotate(330deg);
             display: inline-block;
             font-weight: 600;
           }
