@@ -3,10 +3,10 @@
     <div class="portfolio-left-section">
       <div class="experience-title">
         <p :style="{ color: colors.roxo }" class="experience">Experience</p>
-        <h1 :style="{ marginTop:'16px'}">Skills & <br>Experience</h1>
-      </div>
-      <div class="quote-experience">
-        <p :style="{ width: '80%', lineHeight:'32px'}">I'm a specialist in Mobile and Full-Stack development. A passion of mine is developing solutions and solving problems through apps and websites. Primarily on Flutter Development!</p>
+        <h1 :style="{ marginTop:'16px', fontWeight: '700'}">Skills & <br>Experience</h1>
+        <div class="quote-experience">
+          <p :style="{ width: '80%', lineHeight:'32px'}">I'm a specialist in Mobile and Full-Stack development. A passion of mine is developing solutions and solving problems through apps and websites. Primarily on Flutter Development!</p>
+        </div>
       </div>
 
       <div class="skills-container">
@@ -17,7 +17,7 @@
             <div class="img-holder" :style="{ backgroundColor: colors.preto }">
               <img :src="skill.img" />
             </div>
-            <p>{{ skill.name }}</p>
+            <p class="skill-text">{{ skill.name }}</p>
           </div>
         </div>
       </div>
@@ -80,13 +80,14 @@ const skills = [
     padding: 40px 0 30px 100px;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 
     .experience-title {
-      font-size: 26px;
       text-align: left;
       
       h1 {
         font-weight: 600;
+        font-size: 52px;
       }
 
       .experience {
@@ -95,10 +96,11 @@ const skills = [
         display: inline-block;
         font-weight: 600;
       }
-    }
 
-    .quote-experience {
+      
+      .quote-experience {
       margin-top: 20px;
+      }
     }
 
     .skills-container {
@@ -135,6 +137,10 @@ const skills = [
               max-width: 100%;
               max-height: 100%;
             }
+          }
+
+          .skill-text {
+            font-weight: 600;
           }
         }
       }

@@ -30,7 +30,7 @@
         </div>
       </div>
       <div class="home-right-section">
-          <p class="name" :style="{ color: colors.roxo }">Bernardo, A.K.A, Benny</p>
+          <p class="name" :style="{ color: colors.roxo }">Bernardo, A.K.A Benny</p>
           <img src="../assets/imgs/otter.jpg" class="otter-img"/>
           <q :style="{marginTop: '20px'}">That's my favorite animal, btw</q>
       </div>

@@ -76,17 +76,4 @@ header{
       }
   }
 }
-footer {
-  color: white;
-  padding: 10px;
-  height: 40px;
-  background-color: #898989;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-
-  img {
-    height: 20px;
-  }
-}
 </style>
