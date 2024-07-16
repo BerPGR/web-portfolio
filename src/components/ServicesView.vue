@@ -34,8 +34,6 @@
 <script setup lang="ts">
 import colors from "../assets/colors/colors";
 
-const viewAll = "View all services I offer * View all services I offer"
-
 const services = [
   {title: 'Mobile App Development'},
   {title: 'Website Development'},
