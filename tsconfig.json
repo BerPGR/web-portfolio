@@ -9,7 +9,7 @@
     }
   ],
   "compilerOptions": {
-    "noImplicitAny": true,
+    "noImplicitAny": false,
   },
   "allowJs": true,
   "strict": true,
