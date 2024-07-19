@@ -32,7 +32,7 @@ const scrollToSection = (sectionId) => {
   </div>
 </template>
 
-<style scoped style="scss">
+<style scoped lang="scss">
 header{
   @media screen and (max-width: 992px) {
     display: none
