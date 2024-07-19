@@ -30,7 +30,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import colors from "../assets/colors/colors";
 
 const services = [

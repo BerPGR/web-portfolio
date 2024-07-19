@@ -48,7 +48,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import iphoneImg from '../assets/imgs/iphone.png';
 import webImg from '../assets/imgs/web.png';
 import postgresqlImg from '../assets/imgs/postgresql.png';

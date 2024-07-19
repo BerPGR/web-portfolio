@@ -35,7 +35,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { computed, onMounted, onUnmounted, ref } from "vue";
 import colors from "../assets/colors/colors";
 
@@ -72,7 +72,7 @@ const changeWord = () => {
   currentWord.value = iam[wordIndex]
 }
 
-let intervalId: number;
+let intervalId
 
 onMounted(() => {
   intervalId = window.setInterval(changeWord, 6000)
