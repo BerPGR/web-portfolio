@@ -34,6 +34,9 @@ const scrollToSection = (sectionId) => {
 
 <style scoped style="scss">
 header{
+  @media screen and (max-width: 992px) {
+    display: none
+  }
   z-index: 2;
   background-color: white;
   display: flex;
@@ -41,7 +44,7 @@ header{
   align-items: center;
   height: 80px;
   width: 100%;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
   nav {
       ul {

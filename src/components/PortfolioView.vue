@@ -3,10 +3,8 @@
     <div class="portfolio-left-section">
       <div class="experience-title">
         <p :style="{ color: colors.roxo }" class="experience">Experience</p>
-        <h1 :style="{ marginTop:'16px', fontWeight: '700'}">Skills & <br>Experience</h1>
-        <div class="quote-experience">
-          <p :style="{ width: '80%', lineHeight:'32px'}">I'm a specialist in Mobile and Full-Stack development. A passion of mine is developing solutions and solving problems through apps and websites. Primarily on Flutter Development!</p>
-        </div>
+        <h1>Skills & <br>Experience</h1>
+        <p class="quote-text">I'm a specialist in Mobile and Full-Stack development. A passion of mine is developing solutions and solving problems through apps and websites. Primarily on Flutter Development!</p>
       </div>
 
       <div class="skills-container">
@@ -32,10 +30,16 @@
         <div class="experience-container" v-for="(experience, i) in experiences" :key="i">
           <div class="divider"></div>
           <div class="info-container">
-            <h3 :style="{ fontSize: '16px', fontWeight: '600'}">{{experience.data}}</h3>
             <div class="info-text">
-              <h2 :style="{fontSize: '26px', fontWeight: '700'}">{{experience.function}}</h2>
-              <p :style="{marginTop: '20px'}">{{experience.company}}</p>
+              <div class="info-upper-data">
+                <h3 :style="{ fontSize: '16px', fontWeight: '600'}">{{experience.data}}</h3>
+                <h2 :style="{fontSize: '26px', fontWeight: '700'}" class="info-text-function">{{experience.function}}</h2>
+              </div>
+              <div class="info-down-data">
+                <p class="info-text-location">{{experience.location}}</p>
+                <p class="info-text-company">{{experience.company}}</p>
+              </div>
+
             </div>
           </div>
         </div>
@@ -54,10 +58,10 @@ import javaImg from '../assets/imgs/java.png';
 import colors from "../assets/colors/colors";
 
 const experiences = [
-  {data: "2022 - Present", function: "Web Developer Intern", company: "CGEE"},
-  {data: "2024 - 2024", function: "Mobile Developer", company: 'DSA - Divisão Sul Americana'},
-  {data: "2022 - 2022", function: "Web Developer Intern", company: "Fahrenheit Marketing"},
-  {data: "2021 - 2021", function: "Developer Intern", company: "Ponto Sistemas"},
+  {data: "2022 - Present", function: "Web Developer Intern", company: "CGEE",  location: 'Brasília, BR'},
+  {data: "2024", function: "Mobile Developer", company: 'DSA - Divisão Sul Americana',  location: 'Brasília, BR'},
+  {data: "2022", function: "Web Developer Intern", company: "Fahrenheit Marketing", location: 'Texas, USA'},
+  {data: "2021", function: "Developer Intern", company: "Ponto Sistemas", location: 'Joinville, BR'},
 ]
 
 const skills = [
@@ -71,9 +75,21 @@ const skills = [
 </script>
 
 <style scoped lang="scss">
+$breakpoint-xs: 576px;
+$breakpoint-sm: 768px;
+$breakpoint-md: 992px;
+$breakpoint-lg: 1200px;
+$breakpoint-xl: 1400px;
+
 .portfolio-container {
   min-height: 100vh;
   display: flex;
+  
+  @media screen and (max-width: $breakpoint-md){
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 0;
+  }
 
   .portfolio-left-section {
     width: 50%;
@@ -82,12 +98,29 @@ const skills = [
     flex-direction: column;
     justify-content: space-between;
 
+    @media screen and (max-width: $breakpoint-md){
+      padding: 0;
+      width: 80%;
+    }  
+
     .experience-title {
-      text-align: left;
-      
+      @media screen and (max-width: $breakpoint-md){
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+       }
+
       h1 {
-        font-weight: 600;
+        font-weight: 700;
         font-size: 52px;
+        margin-top: 16px;
+
+        @media screen and (max-width: $breakpoint-md){
+          text-align: center;
+          margin-top: 0;
+          font-size: 36px;
+        } 
       }
 
       .experience {
@@ -95,17 +128,34 @@ const skills = [
         transform: rotate(330deg);
         display: inline-block;
         font-weight: 600;
-      }
 
-      
-      .quote-experience {
-      margin-top: 20px;
+        @media screen and (max-width: $breakpoint-md){
+          text-align: center;
+          transform: rotate(0deg);
+          display: flex;
+          font-size: 24px;
+          font-weight: bold;
+        }
+      }
+      .quote-text {
+        width: 80%;
+        line-height: 32px;
+        margin-top: 16px;
+
+        @media screen and (max-width: $breakpoint-md){
+          text-align: center;
+          width: 100%;
+        }
       }
     }
 
     .skills-container {
       display: flex;
       flex-direction: column;
+
+      @media screen and (max-width: $breakpoint-md){
+        align-items: center;
+      }
     
       h1 {
         margin-bottom: 20px;
@@ -114,14 +164,24 @@ const skills = [
       .skills {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(2, auto);
+        grid-template-rows: repeat(2, 1fr);
         grid-gap: 20px;
         justify-items: auto;
+
+        @media screen and (max-width: $breakpoint-xs){
+          justify-items: center;
+          grid-template-columns: repeat(2, 1fr);
+          grid-template-rows: repeat(3, 1fr);
+        }
     
         .skill-content {
           display: flex;
           flex-direction: column;
           margin-bottom: 30px;
+
+          @media screen and (max-width: $breakpoint-md){
+            align-items: center;
+          }
     
           .img-holder {
             display: flex;
@@ -141,6 +201,10 @@ const skills = [
 
           .skill-text {
             font-weight: 600;
+            
+            @media screen and (max-width: $breakpoint-md){
+              text-align: center;
+            }
           }
         }
       }
@@ -153,14 +217,24 @@ const skills = [
     width: 50%;
     padding: 40px 100px 0 0;
 
+    @media screen and (max-width: $breakpoint-md){
+      padding: 50px 0;
+      width: 80%;
+    }  
+
     .title {
       font-weight: 600;
+      text-align: center
     }
 
     .experiences {
       display: flex;
       flex-direction: column;
       margin-top: 20px;
+
+      @media screen and (max-width: $breakpoint-md){
+        margin-top: 0;
+      }  
 
       .experience-container {
         display: flex;
@@ -176,14 +250,68 @@ const skills = [
 
         .info-container {
           display: flex;
-          justify-content: space-between;
-          text-align: right;
+          flex-direction: column;
           margin-top: 16px;
+
+          @media screen and (max-width: $breakpoint-md) {
+            flex-direction: column;
+            text-align: center;
+          }
 
           .info-text {
             display: flex;
             flex-direction: column;
-            align-self: center;
+
+            .info-upper-data {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+
+              @media screen and (max-width: $breakpoint-md) {
+                flex-direction: column;
+                align-items: center;
+              }
+
+
+              .info-text-function {
+                font-size: 26px;
+                font-weight: 700;
+                
+                @media screen and (max-width: $breakpoint-md) {
+                  margin-top: 10px;  
+                }
+              }
+            }
+
+
+            .info-down-data {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              width: 100%;
+
+              @media screen and (max-width: $breakpoint-md) {
+                flex-direction: column;
+                align-items: center;
+              }
+
+              .info-text-location {
+                margin-top: 20px;
+
+                @media screen and (max-width: $breakpoint-md) {
+                  margin-top: 10px;  
+                }
+              }
+
+              .info-text-company {
+                margin-top: 20px;
+                
+                @media screen and (max-width: $breakpoint-md) {
+                  margin-top: 10px;  
+                }
+              }
+            }
+
           }
         }
       }

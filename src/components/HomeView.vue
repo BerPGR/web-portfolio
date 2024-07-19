@@ -2,46 +2,42 @@
   <div class="home-container" :style="{ backgroundColor: colors.branco }">
     <div class="home-section">
       <div class="home-left-section">
-
-        <div>
+        
           <div :style="{paddingBottom: '30px'}" class="iam-title">
-            <p class="hello" :style="{ color: colors.roxo }">Hello!</p>
-            <h1>I am</h1>
-            <h1>Your</h1>
+            <p class="hello" :style="[{ color: colors.roxo}]">Hello!</p>
+            <h1>I am your</h1>
             <h1 class="current-word">{{currentWord}}</h1>
           </div>
   
-          <p>Hi! I'm a Web/Mobile/Fullstack developer - creating awesome
+          <p class="phrase">Hi! I'm a Web/Mobile/Fullstack developer - creating awesome
             <br>apps and websites for companies around the world!
           </p>
   
           <div class="home-buttons">
-            <button :style="{ backgroundColor: colors.roxo, color: colors.branco }" class="button-chat">Let's Talks <i class="fa-regular fa-paper-plane" /></button>
-            <button :style="{ backgroundColor: colors.branco }" class="button-portfolio">Portfolio <i class="fa-solid fa-arrow-trend-up" /></button>
+            <a href="https://www.linkedin.com/in/bernardomm27/" target="blank"><button :style="{ backgroundColor: colors.roxo, color: colors.branco }" class="button-chat">Let's Talks <i class="fa-regular fa-paper-plane" /></button></a>
+            <a href="https://github.com/" target="blank"><button :style="{ backgroundColor: colors.branco }" class="button-portfolio">Portfolio <i class="fa-solid fa-arrow-trend-up" /></button></a>
           </div>
-        </div>
 
         <div class="social-media" :style="{ marginTop: '50px'}">
           <span>Check out my</span>
           <a v-for="(social, i) in socialMedia" :key="i" :href="social.link" target="blank" :style="{color: 'black'}">
             <i :class="social.class" style="height: 30px; cursor: pointer"/>
           </a>
-          
         </div>
       </div>
       <div class="home-right-section">
-          <p class="name" :style="{ color: colors.roxo }">Bernardo, A.K.A Benny</p>
-          <img src="../assets/imgs/otter.jpg" class="otter-img"/>
-          <q :style="{marginTop: '20px'}">That's my favorite animal, btw</q>
+        <p class="name" :style="{ color: colors.roxo }" v-if="isLargeScreenName">Bernardo, A.K.A Benny</p>
+        <img src="../assets/imgs/otter.jpg" class="otter-img"/>
+        <q :style="{marginTop: '10px', paddingBottom: '5px'}" v-if="isLargeScreen">That's my favorite animal, btw</q>
+        <p :style="{marginTop: '10px', paddingBottom: '5px', color: colors.roxo, fontWeight: '600', fontSize: '24px', textAlign: 'center'}" v-else>Bernardo, A.K.A Benny</p>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from "vue";
+import { computed, onMounted, onUnmounted, ref } from "vue";
 import colors from "../assets/colors/colors";
-import { transform } from "typescript";
 
 const iam = ['Mobile Developer', 'Web Developer', 'Full-Stack Developer']
 const socialMedia = [
@@ -62,6 +58,15 @@ const socialMedia = [
 let currentWord = ref(iam[0])
 let wordIndex = 0
 
+const isLargeScreen = computed(() => {
+  return window.screen.width > 992 
+})
+
+const isLargeScreenName = computed(() => {
+  return window.screen.width > 992
+})
+
+
 const changeWord = () => {
   wordIndex = (wordIndex + 1) % iam.length
   currentWord.value = iam[wordIndex]
@@ -79,10 +84,23 @@ onUnmounted(() => {
 </script>
 
 <style scoped lang='scss'>
+$breakpoint-xs: 576px;
+$breakpoint-sm: 768px;
+$breakpoint-md: 992px;
+$breakpoint-lg: 1200px;
+$breakpoint-xl: 1400px;
+
 .home-container {
     .home-section {
       display: flex;
-      height: calc(100vh - 80px);
+      min-height: calc(100vh - 80px);
+
+      @media screen and (max-width: 992px) {
+        min-height: 100vh;
+        flex-direction: column-reverse;
+        align-items: center;
+        padding: 40px 0;
+      }
 
       .home-left-section {
         width: 50%;
@@ -90,10 +108,29 @@ onUnmounted(() => {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+
+        @media screen and (max-width: $breakpoint-md) {
+          padding: 0;
+          width: 100%;
+          align-items: center;
+        }
+
+        .phrase {
+          @media screen and (max-width: $breakpoint-md) {
+            text-align: center;
+            width: 80%
+          }
+        }
         
         .iam-title {
           font-size: 28px;
           text-align: left;
+
+          @media screen and (max-width: $breakpoint-md) {
+            text-align: center;
+            font-size: 18px;
+            margin-top: 20px;
+          }
           
           h1 {
             font-weight: 600;
@@ -104,6 +141,9 @@ onUnmounted(() => {
             transform: rotate(330deg);
             display: inline-block;
             font-weight: 600;
+            @media screen and (max-width: $breakpoint-md) {
+              display: none
+            }
           }
         }
 
@@ -112,6 +152,28 @@ onUnmounted(() => {
           display: flex;
           justify-content: space-between;
           align-items: center;
+
+          @media screen and (max-width: $breakpoint-md){
+            width: 100%;
+            justify-content: space-between;
+          }
+
+          @media screen and (max-width: $breakpoint-xs) {
+            flex-direction: column;
+            align-items: center;
+          }
+
+          a {
+            @media screen and (max-width: $breakpoint-xs) {
+              margin-top: 30px;
+            }
+          }
+
+          span {
+            @media screen and (max-width: $breakpoint-xs) {
+              font-weight: 600;
+            }
+          }
         }
 
         .current-word {
@@ -121,6 +183,16 @@ onUnmounted(() => {
         .home-buttons {
           display: block;
           margin-top: 60px;
+
+          @media screen and (max-width: $breakpoint-md) {
+            display: flex;
+            justify-content: center;
+          }
+
+          @media screen and (max-width: $breakpoint-xs) {
+            flex-direction: column;
+            align-items: center;
+          }
 
           .button-chat { 
             cursor: pointer;
@@ -139,6 +211,11 @@ onUnmounted(() => {
             margin-left: 12px;
             font-size: 16px;
             font-weight: 500;
+
+            @media screen and (max-width: $breakpoint-xs) {
+              margin-top: 20px;
+              margin-left: 0;
+            }
           }
         }
       }
@@ -161,6 +238,10 @@ onUnmounted(() => {
           width: 60%;
           object-fit: contain;
           clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);
+
+          @media screen and (max-width: $breakpoint-md) {
+            width: 80%;
+          }
         }
       }
     }
